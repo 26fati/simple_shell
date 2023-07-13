@@ -1,9 +1,6 @@
-#include  <stdio.h>
-#include  <unistd.h>
-#include  <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <sys/types.h>
+#include "main.h"
+#include <stdlib.h>
+
 
 int main()
 
@@ -14,16 +11,18 @@ int main()
   int status;
   char* argv[2]; 
   char* envp[1];
-
+  
 
 while(1) {
   write(0, prompt , 5);
 
-  getline(&command, &command_size, stdin);
-  
+  int command_len = getline(&command, &command_size, stdin);
+  if (command_len == -1) {
+      exit(EXIT_FAILURE);
+    }
+  command[command_len - 1] = '\0'; 
   printf("\n");
   write(0, command, command_size);
-  command[strcspn(command, "\n")] = '\0';
   printf("\n");
 
 
@@ -31,15 +30,12 @@ while(1) {
   argv[1] = NULL;
   envp[0] = NULL;
   pid_t pid = fork();
-  printf("just called fork process id = %u\n", pid);
   if (pid == 0) {
-    printf("insid child process \n");
-    int res = execve(argv[0], argv, NULL);
-    if (res == -1) perror("execve");
+    int res = execve(_strjoin("/bin/", command), argv, NULL);
+    if (res == -1) perror("./hsh");
   }
   else {
     wait(&status);
-    printf("hello form parent process \n");
   }
 
   }
