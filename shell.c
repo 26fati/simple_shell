@@ -14,13 +14,15 @@ while(1) {
 
   command_len = getline(&command, &command_size, stdin);
   if (command_len == -1) {
-      exit(EXIT_SUCCESS);
+      exit(EXIT_FAILURE);
     }
- 
-  command[command_len - 1] = '\0'; 
-/*
+
+
+  command[command_len - 1] = '\0';
+
+
   write(0, command, command_len);
- */
+
 
   argv[0] = command;
   argv[1] = NULL;
