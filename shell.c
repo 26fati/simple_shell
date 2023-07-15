@@ -18,9 +18,9 @@ while(1) {
     }
  
   command[command_len - 1] = '\0'; 
-
+/*
   write(0, command, command_len);
- 
+ */
 
   argv[0] = command;
   argv[1] = NULL;
