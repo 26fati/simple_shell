@@ -43,13 +43,13 @@ char **read_line(void)
 	free(line_copied);
 	free(line);
 
-	for (int i = 0; token != NULL; i++)
+	for (i = 0; token != NULL; i++)
 	{
 		free(argv[i]);
 	}
-
+/*
 	free(argv);
-	
+*/	
 	return (argv);
 
 

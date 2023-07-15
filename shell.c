@@ -5,9 +5,9 @@ int main()
 {
   char * prompt = "($) ";
   char * command;
-  size_t command_size = 1024;
+  size_t command_size = 0;
   ssize_t command_len;
-  char* argv[2]; 
+  char *argv[2];
 
 while(1) {
   write(0, prompt , 5);
@@ -18,15 +18,16 @@ while(1) {
     }
  
   command[command_len - 1] = '\0'; 
- /*
-  write(0, command, command_size);
-  */
+
+  write(0, command, command_len);
+ 
 
   argv[0] = command;
   argv[1] = NULL;
-  if (fork() == 0) {
-    int res = execve(command,argv, NULL);
-    if (res == -1) perror("./hsh");
+  if (fork() == 0) 
+  {
+	  if (execve(argv[0], argv, NULL) == -1)
+			  perror("./hsh");
   }
   else {
     wait(NULL);
