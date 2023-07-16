@@ -17,9 +17,10 @@ while(1) {
   command_len = getline(&command, &command_size, stdin);
   if (command_len == -1) {
       exit(EXIT_SUCCESS);
-    }
+  }
+  /*
 command[command_len - 1] = '\0';
-/*
+
   _trim(command);
 
   if (is_space(command)) {
@@ -45,7 +46,7 @@ if (argv == NULL)
 token = strtok(line, delimiter);
 for (i = 0; token != NULL; i++)
 {
-	argv[i] = malloc(sizeof(char *) * _strlen(token));
+	argv[i] = malloc(sizeof(char) * _strlen(token));
 	_strcpy(argv[i], token);
 	strtok(NULL, delimiter);
 }
@@ -53,16 +54,16 @@ argv[i] = NULL;
 free(line);
   if (fork() == 0) 
   {
-	  if (execve(argv[0], argv, NULL) == -1)
+	  if (execve(argv[0], argv, environ) == -1)
 			  perror("./hsh");
   }
   else {
     wait(NULL);
+    for (i = 0; i < count; i++)
+    {
+        free(argv[i]);
+    }
   }
-for (i = 0; i < count; i++)
-{
-	free(argv[i]);
-}
 
   }
 
