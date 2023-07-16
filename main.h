@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <stddef.h>
@@ -13,4 +14,6 @@
 
 char *_strjoin(char *str1, char *str2); 
 int _strlen(char *s);
+void _trim(char* s);
+int is_space(char *s);
 #endif

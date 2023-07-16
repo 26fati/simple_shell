@@ -1,5 +1,5 @@
 #include "main.h"
-
+extern char **environ;
 int main()
 
 {
@@ -14,21 +14,25 @@ while(1) {
 
   command_len = getline(&command, &command_size, stdin);
   if (command_len == -1) {
-      exit(EXIT_FAILURE);
+      exit(EXIT_SUCCESS);
     }
 
 
+
   command[command_len - 1] = '\0';
+  //_trim(command);
 
-
-  write(0, command, command_len);
+  if (is_space(command)) {
+  	continue;
+  }
+  //write(0, command, command_len);
 
 
   argv[0] = command;
   argv[1] = NULL;
   if (fork() == 0) 
   {
-	  if (execve(argv[0], argv, NULL) == -1)
+	  if (execve(argv[0], argv, environ) == -1)
 			  perror("./hsh");
   }
   else {
