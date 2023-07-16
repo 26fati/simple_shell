@@ -46,9 +46,9 @@ if (argv == NULL)
 token = strtok(line, delimiter);
 for (i = 0; token != NULL; i++)
 {
-	argv[i] = malloc(sizeof(char) * _strlen(token));
+	argv[i] = malloc(sizeof(char) * _strlen(token) + 1);
 	_strcpy(argv[i], token);
-	strtok(NULL, delimiter);
+	token = strtok(NULL, delimiter);
 }
 argv[i] = NULL;
 free(line);
