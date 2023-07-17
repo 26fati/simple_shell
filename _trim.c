@@ -4,5 +4,5 @@ void _trim(char* s) {
         while (*d == ' ') {
             ++d;
         }
-    } while (*s++ = *d++);
+    } while ((*s++ = *d++));
 }

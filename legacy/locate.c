@@ -108,8 +108,6 @@ char *join(const char sep, const char *path1, const char *path2)
 	}
 	dir_path[i] = '\0';
 	return (dir_path);
-
-
 }
 
 /**
@@ -117,7 +115,7 @@ char *join(const char sep, const char *path1, const char *path2)
  *
  * @filePath: the file path.
  *
- * Return: returns 1 in success. otherwise 0.
+ * Return: returns 1 in success. otherwise 0. // command false , path true
  */
 int file_exist(const char *filePath)
 {
