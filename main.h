@@ -12,6 +12,8 @@
 #include <stdbool.h>
 #include <errno.h>
 
+extern char **environ;
+
 
 char *_strjoin(char *str1, char *str2); 
 int _strlen(char *s);

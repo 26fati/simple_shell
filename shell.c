@@ -1,5 +1,6 @@
 #include "main.h"
-extern char **environ;
+
+
 
 
 int main()
@@ -46,7 +47,7 @@ int main()
       }
       else
       {
-        wait(99);
+        wait(NULL);
       }
     }
     else 
@@ -68,16 +69,16 @@ int main()
           {
             command_executed = false;
             // printf("executed\n");
-            wait(99);
+            wait(NULL);
           }
           break;
         };
         free(full_path);
       }
-
       if(errno == ENOENT) {
         // perror("./hsh");
-        fprintf(stderr, "./hsh: 1: %s: not found\n", command);
+	write(2, "./hsh: 1: ls: not found\n", 24); 
+        exit(127);
       }
       
     }
