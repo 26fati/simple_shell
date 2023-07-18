@@ -1,7 +1,8 @@
 #include "main.h"
 extern char **environ;
-int main()
 
+
+int main()
 {
   char *prompt = "($) ";
   char *command, *line, *token, **paths_arr;
@@ -9,22 +10,11 @@ int main()
   ssize_t command_len;
   char **argv, **s;
   char *delimiter = " \t\n";
-  int i, count = 0;
+  int i, count = 0, tokens_path_len;
 
   char *paths = _get_paths(environ);
   paths_arr = _get_path_tokens(paths);
-
-  for (i = 0; i < 13; i++)
-  {
-    // printf("path[%d] = %s\n", i + 1, paths_arr[i]);
-  }
-
-  // for(i = 0 ; i < 13; i++) {
-  //       char * full_path = join('/', paths_arr[i], "ls");
-  //       printf("%s\n", full_path);
-
-  //       if (file_exist(full_path)) printf("found exec on %d", i + 1);
-  // }
+  tokens_path_len = path_arr_length(paths_arr);
 
   while (1)
   {
@@ -35,44 +25,12 @@ int main()
     {
       exit(EXIT_SUCCESS);
     }
-    /*
-  command[command_len - 1] = '\0';
 
-    _trim(command);
-
-    //write(0, command, command_len);
-
-  */
     if (is_space(command))
     {
       continue;
     }
-
-    line = malloc(sizeof(char *) * command_len + 1);
-    if (line == NULL)
-      exit(EXIT_FAILURE);
-    _strcpy(line, command);
-    token = strtok(command, delimiter);
-
-    while (token)
-    {
-      count++;
-      token = strtok(NULL, delimiter);
-    }
-
-    count++;
-    argv = malloc(sizeof(char *) * count);
-    if (argv == NULL)
-      exit(EXIT_FAILURE);
-    token = strtok(line, delimiter);
-    for (i = 0; token != NULL; i++)
-    {
-      argv[i] = malloc(sizeof(char) * _strlen(token) + 1);
-      _strcpy(argv[i], token);
-      token = strtok(NULL, delimiter);
-    }
-    argv[i] = NULL;
-    free(line);
+    argv = tokenize_command(command, delimiter, &count);
 
     if (file_exist(argv[0]))
     {
@@ -85,16 +43,12 @@ int main()
       else
       {
         wait(NULL);
-        for (i = 0; i < count; i++)
-        {
-          free(argv[i]);
-        }
       }
     }
     else
     {
       // printf("file  does noext exist join operaion\n");
-      for (i = 0; i < 13; i++)
+      for (i = 0; i < tokens_path_len; i++)
       {
         char *full_path = join('/', paths_arr[i], argv[0]);
         // printf("%s\n", full_path);
@@ -109,14 +63,16 @@ int main()
           else
           {
             wait(NULL);
-            for (i = 0; i < count; i++)
-            {
-              free(argv[i]);
-            }
           }
           break;
         };
+        free(full_path);
       }
+    }
+
+    for (i = 0; i < count; i++)
+    {
+          free(argv[i]);
     }
   }
 
