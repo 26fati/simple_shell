@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <errno.h>
 
 
 char *_strjoin(char *str1, char *str2); 

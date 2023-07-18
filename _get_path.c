@@ -13,11 +13,14 @@ char *_get_paths(char **env)
   env_var = env;
   size_t prefix_len = 5;
 
+  // if (env != NULL) printf("no environ\n");
+
   /*
    * prefix length is to avoid return PATH=/HOME/BIN/ ONLY  /HOME/BIN
    */
   for (; *env_var; env_var++)
   {
+    
     if ((*env_var)[0] == 'P' && (*env_var)[1] == 'A' && (*env_var)[2] == 'T' && (*env_var)[3] == 'H')
     {
       int path_len = _strlen(*env_var) + 1;
@@ -25,6 +28,11 @@ char *_get_paths(char **env)
       _strcpy(paths, *(env_var) + prefix_len);
     }
   }
+
+  // printf("path is %s with length of %d \n", paths, _strlen(paths));
+
+  // if (paths == NULL) printf("null ddo\n");
+
 
   return (paths);
 }
@@ -86,8 +94,12 @@ int file_exist(const char *file_path)
 {
   struct stat buffer;
 
-  if (stat(file_path, &buffer) == 0)
+  if (stat(file_path, &buffer) == 0) {
+    // printf("file exist\n");
     return (1);
+    
+  }
+  // printf("file does not exist\n");
   return (0);
 }
 
