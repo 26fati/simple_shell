@@ -30,6 +30,7 @@ int main()
     argv = tokenize_command(command, delimiter, &count);
     
     if (!_strcmp(argv[0], "exit")) {exit(EXIT_SUCCESS); };
+    if (!_strcmp(argv[0], "env")) {_printenv(environ);continue;}
 
     if (file_exist(argv[0])) execute_command_directly(argv);
     

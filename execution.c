@@ -2,9 +2,10 @@
 
 void execute_command_directly(char **argv) {
 
-    int state;
+    int status;
     pid_t pid;
 
+    // printf("execute_command_directly\n");
     pid = fork();
 
     if (pid == -1)
@@ -14,18 +15,27 @@ void execute_command_directly(char **argv) {
 
     else if (pid == 0)
     {
+        printf("test pid  = 0\n");
         if (execve(argv[0], argv, environ) == -1)
         {
             perror("./hsh");
-            exit(EXIT_FAILURE);
+            // exit(EXIT_FAILURE);
         }
+        // printf("a;dslkfjaslkf\n");
     }
     else
     {
-        if (waitpid(pid, &state, 0) == -1)
+        int res = waitpid(pid, &status, 0);
+        // printf("state = %d\n", status);
+        if (res == -1)
 		{
 			perror("waitpid");
 		}
+
+        if(WIFEXITED(status)) {
+
+            _exit(2);
+        };
     }
 }
 

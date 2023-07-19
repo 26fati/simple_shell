@@ -29,4 +29,5 @@ int path_arr_length(char **path_arr);
 char **tokenize_command(char *command, const char *delimiter, int *count);
 void execute_command_directly(char **argv);
 void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len);
+void _printenv(char **envp);
 #endif
