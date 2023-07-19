@@ -1,8 +1,5 @@
 #include "main.h"
 
-
-
-
 int main()
 {
   // printf("before anything\n");
@@ -24,69 +21,23 @@ int main()
     write(0, prompt, 5);
 
     command_len = getline(&command, &command_size, stdin);
+
+    if (command_len == -1) exit(EXIT_SUCCESS);
+  
+    if (is_space(command)) continue;
+
     
-    if (command_len == -1)
-    {
-      exit(EXIT_SUCCESS);
-    }
-
-    if (is_space(command))
-    {
-      continue;
-    }
     argv = tokenize_command(command, delimiter, &count);
+    
+    if (!_strcmp(argv[0], "exit")) {exit(EXIT_SUCCESS); };
 
-    if (file_exist(argv[0]))
-    {
-      // printf("file exist\n");
-      if (fork() == 0)
-      {
-        // printf("am here");
-        if (execve(argv[0], argv, environ) == -1)
-          perror("./hsh");
-      }
-      else
-      {
-        wait(NULL);
-      }
-    }
-    else 
-    {
-      // printf("file  does noext exist join operaion\n");
-      for (i = 0; i < tokens_path_len; i++)
-      {
-        char *full_path = join('/', paths_arr[i], argv[0]);
-        // printf("%s\n", full_path);
+    if (file_exist(argv[0])) execute_command_directly(argv);
+    
+    else try_execute_with_paths(argv, paths_arr, tokens_path_len);
+    
 
-        if (file_exist(full_path))
-        {
-          if (fork() == 0)
-          {
-            if (execve(full_path, argv, environ) == -1)
-              perror("./hsh");
-          }
-          else
-          {
-            command_executed = false;
-            // printf("executed\n");
-            wait(NULL);
-          }
-          break;
-        };
-        free(full_path);
-      }
-      if(errno == ENOENT) {
-        // perror("./hsh");
-	write(2, "./hsh: 1: ls: not found\n", 24); 
-        exit(127);
-      }
-      
-    }
-
-    for (i = 0; i < count; i++)
-    {
-          free(argv[i]);
-    }
+    for (i = 0; i < count; i++) free(argv[i]);
+    
   }
 
   return (0);

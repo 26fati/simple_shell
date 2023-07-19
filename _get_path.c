@@ -13,7 +13,7 @@ char *_get_paths(char **env)
   env_var = env;
   size_t prefix_len = 5;
 
-  // if (env != NULL) printf("no environ\n");
+  if (env == NULL) return NULL;
 
   /*
    * prefix length is to avoid return PATH=/HOME/BIN/ ONLY  /HOME/BIN
