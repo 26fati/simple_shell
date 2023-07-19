@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <errno.h>
 
 
 extern char **environ;

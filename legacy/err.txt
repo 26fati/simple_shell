@@ -1,0 +1,396 @@
+zain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.13/checker.bash ./hsh ../simple_shell_test/0.3.13/bin_ls_1_arg.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.14/checker.bash ./hsh ../simple_shell_test/0.3.14/mix_ls_bin_ls_spaces.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.15/checker.bash ./hsh ../simple_shell_test/0.3.15/ls_spaces.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.16/checker.bash ./hsh ../simple_shell_test/0.3.16/ls_empty_path.bash 
+/tmp/hbtn_checker_command_29124: line 1: 125766 Done                    /usr/bin/echo "ls"
+     125767 Segmentation fault      (core dumped) | "./hsh" > "/tmp/hbtn_checker_output_29124" 2> "/tmp/hbtn_checker_error_output_29124"
+(command)[echo "ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ls: not found
+](Length: 24)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+SESSION_MANAGER=local/zain:@/tmp/.ICE-unix/1933,unix/zain:/tmp/.ICE-unix/1933
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+XDG_MENU_PREFIX=gnome-
+TERM_PROGRAM_VERSION=1.79.2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LC_ADDRESS=fr_FR.UTF-8
+GNOME_SHELL_SESSION_MODE=ubuntu
+LC_NAME=fr_FR.UTF-8
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+LC_MONETARY=fr_FR.UTF-8
+GTK_MODULES=gail:atk-bridge
+PWD=/home/zain/Documents/simple_shell
+LOGNAME=zain
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=wayland
+SYSTEMD_EXEC_PID=123834
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.2OC571
+VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
+HOME=/home/zain
+USERNAME=zain
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LC_PAPER=fr_FR.UTF-8
+XDG_CURRENT_DESKTOP=Unity
+VTE_VERSION=6800
+WAYLAND_DISPLAY=wayland-0
+GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/c06bb7ba_6bc4_40ba_a8f9_e1bc49a63a36
+CHROME_DESKTOP=code-url-handler.desktop
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+GNOME_SETUP_DISPLAY=:1
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LC_IDENTIFICATION=fr_FR.UTF-8
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=zain
+VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-86aa2aefbf.sock
+GNOME_TERMINAL_SERVICE=:1.6682
+DISPLAY=:0
+SHLVL=3
+LC_TELEPHONE=fr_FR.UTF-8
+QT_IM_MODULE=ibus
+LC_MEASUREMENT=fr_FR.UTF-8
+XDG_RUNTIME_DIR=/run/user/1000
+LC_TIME=fr_FR.UTF-8
+VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+GDK_BACKEND=x11
+PATH=
+GDMSESSION=ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+LC_NUMERIC=fr_FR.UTF-8
+OLDPWD=/home/zain/Documents
+TERM_PROGRAM=vscode
+_=/usr/bin/env
+zain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.17/checker.bash ./hsh ../simple_shell_test/0.3.17/bin_ls_spaces.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.18/checker.bash ./hsh ../simple_shell_test/0.3.18/ls_in_current_dir.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.19/checker.bash ./hsh ../simple_shell_test/0.3.19/ls_dot_ls.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.20/checker.bash ./hsh ../simple_shell_test/0.3.20/env_ignore_ls.bash 
+/tmp/hbtn_checker_command_23930: line 1: 126513 Done                    /usr/bin/echo "ls"
+     126514 Segmentation fault      (core dumped) | "./hsh" > "/tmp/hbtn_checker_output_23930" 2> "/tmp/hbtn_checker_error_output_23930"
+(command)[echo "ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: ls: not found
+](Length: 24)
+(status)[127]
+
+Environment:
+_=/usr/bin/env
+zain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.21/checker.bash ./hsh ../simple_shell_test/0.3.21/ls_path_bin_first.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.22/checker.bash ./hsh ../simple_shell_test/0.3.22/env_ignore_bin_ls.bash 
+/tmp/hbtn_checker_command_27120: line 1: 126882 Done                    /usr/bin/echo "/bin/ls"
+     126883 Segmentation fault      (core dumped) | "./hsh" > "/tmp/hbtn_checker_output_27120" 2> "/tmp/hbtn_checker_error_output_27120"
+(command)[echo "/bin/ls" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[AUTHORS
+README.md
+_get_path.c
+_is_space.c
+_strcat.c
+_strcpy.c
+_strlen.c
+_trim.c
+a.out
+hsh
+legacy
+main.h
+shell
+shell.c
+](Length: 118)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+_=/usr/bin/env
+zain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.23/checker.bash ./hsh ../simple_shell_test/0.3.23/bin_ls_3_times.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.24/checker.bash ./hsh ../simple_shell_test/0.3.24/bin_ls_medium_input.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.25/checker.bash ./hsh ../simple_shell_test/0.3.25/mix_ls_bin_ls.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.26/checker.bash ./hsh ../simple_shell_test/0.3.26/ls_path_no_bin.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.27/checker.bash ./hsh ../simple_shell_test/0.3.27/ls_path_bin_middle.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.28/checker.bash ./hsh ../simple_shell_test/0.3.28/empty_path_failing_cmd.bash 
+/tmp/hbtn_checker_command_17508: line 1: 127866 Done                    /usr/bin/echo "hbtn_cmd"
+     127867 Segmentation fault      (core dumped) | "./hsh" > "/tmp/hbtn_checker_output_17508" 2> "/tmp/hbtn_checker_error_output_17508"
+(command)[echo "hbtn_cmd" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[139]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn_cmd: not found
+](Length: 30)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+SESSION_MANAGER=local/zain:@/tmp/.ICE-unix/1933,unix/zain:/tmp/.ICE-unix/1933
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+XDG_MENU_PREFIX=gnome-
+TERM_PROGRAM_VERSION=1.79.2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LC_ADDRESS=fr_FR.UTF-8
+GNOME_SHELL_SESSION_MODE=ubuntu
+LC_NAME=fr_FR.UTF-8
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+LC_MONETARY=fr_FR.UTF-8
+GTK_MODULES=gail:atk-bridge
+PWD=/home/zain/Documents/simple_shell
+LOGNAME=zain
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=wayland
+SYSTEMD_EXEC_PID=123834
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.2OC571
+VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
+HOME=/home/zain
+USERNAME=zain
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LC_PAPER=fr_FR.UTF-8
+XDG_CURRENT_DESKTOP=Unity
+VTE_VERSION=6800
+WAYLAND_DISPLAY=wayland-0
+GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/c06bb7ba_6bc4_40ba_a8f9_e1bc49a63a36
+CHROME_DESKTOP=code-url-handler.desktop
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+GNOME_SETUP_DISPLAY=:1
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LC_IDENTIFICATION=fr_FR.UTF-8
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=zain
+VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-86aa2aefbf.sock
+GNOME_TERMINAL_SERVICE=:1.6682
+DISPLAY=:0
+SHLVL=3
+LC_TELEPHONE=fr_FR.UTF-8
+QT_IM_MODULE=ibus
+LC_MEASUREMENT=fr_FR.UTF-8
+XDG_RUNTIME_DIR=/run/user/1000
+LC_TIME=fr_FR.UTF-8
+VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+GDK_BACKEND=x11
+PATH=
+GDMSESSION=ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+LC_NUMERIC=fr_FR.UTF-8
+OLDPWD=/home/zain/Documents
+TERM_PROGRAM=vscode
+_=/usr/bin/env
+zain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.29/checker.bash ./hsh ../simple_shell_test/0.3.29/path_path1_var.bash 
+(command)[echo "hbtn_ls" | ./hsh]
+
+[GOT]:
+(stdout)[a.out
+AUTHORS
+_get_path.c
+hbtn_ls
+hsh
+_is_space.c
+legacy
+main.h
+README.md
+shell
+shell.c
+_strcat.c
+_strcpy.c
+_strlen.c
+_trim.c
+](Length: 126)
+(stderr)[](Length: 0)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn_ls: not found
+](Length: 29)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+SESSION_MANAGER=local/zain:@/tmp/.ICE-unix/1933,unix/zain:/tmp/.ICE-unix/1933
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+XDG_MENU_PREFIX=gnome-
+TERM_PROGRAM_VERSION=1.79.2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LC_ADDRESS=fr_FR.UTF-8
+GNOME_SHELL_SESSION_MODE=ubuntu
+LC_NAME=fr_FR.UTF-8
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+LC_MONETARY=fr_FR.UTF-8
+GTK_MODULES=gail:atk-bridge
+PWD=/home/zain/Documents/simple_shell
+LOGNAME=zain
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=wayland
+SYSTEMD_EXEC_PID=123834
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.2OC571
+VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
+HOME=/home/zain
+USERNAME=zain
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LC_PAPER=fr_FR.UTF-8
+XDG_CURRENT_DESKTOP=Unity
+VTE_VERSION=6800
+WAYLAND_DISPLAY=wayland-0
+GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/c06bb7ba_6bc4_40ba_a8f9_e1bc49a63a36
+CHROME_DESKTOP=code-url-handler.desktop
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+GNOME_SETUP_DISPLAY=:1
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LC_IDENTIFICATION=fr_FR.UTF-8
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=zain
+VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-86aa2aefbf.sock
+GNOME_TERMINAL_SERVICE=:1.6682
+DISPLAY=:0
+SHLVL=3
+LC_TELEPHONE=fr_FR.UTF-8
+QT_IM_MODULE=ibus
+LC_MEASUREMENT=fr_FR.UTF-8
+PATH1=/home/zain/Documents/simple_shell
+XDG_RUNTIME_DIR=/run/user/1000
+LC_TIME=fr_FR.UTF-8
+VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+GDK_BACKEND=x11
+GDMSESSION=ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+LC_NUMERIC=fr_FR.UTF-8
+OLDPWD=/home/zain/Documents
+TERM_PROGRAM=vscode
+_=/usr/bin/env
+zain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.30/checker.bash ./hsh ../simple_shell_test/0.3.30/path_current_dir_ls.bash 
+OKzain@zain:~/Documents/simple_shell$ ../simple_shell_test/0.3.31/checker.bash ./hsh ../simple_shell_test/0.3.31/unknown_command_no_fork.bash 
+/usr/bin/cp: cannot stat './allowed_functions': No such file or directory
+/usr/bin/cat: ./allowed_functions_dup: No such file or directory
+(command)[echo "hbtn" | ./hsh]
+
+[GOT]:
+(stdout)[](Length: 0)
+(stderr)[](Length: 0)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[](Length: 0)
+(stderr)[./hsh: 1: hbtn: not found
+](Length: 26)
+(status)[127]
+
+Environment:
+SHELL=/bin/bash
+SESSION_MANAGER=local/zain:@/tmp/.ICE-unix/1933,unix/zain:/tmp/.ICE-unix/1933
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+SSH_AGENT_LAUNCHER=gnome-keyring
+XDG_MENU_PREFIX=gnome-
+TERM_PROGRAM_VERSION=1.79.2
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LC_ADDRESS=fr_FR.UTF-8
+GNOME_SHELL_SESSION_MODE=ubuntu
+LC_NAME=fr_FR.UTF-8
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+LC_MONETARY=fr_FR.UTF-8
+GTK_MODULES=gail:atk-bridge
+PWD=/home/zain/Documents/simple_shell
+LOGNAME=zain
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_TYPE=wayland
+SYSTEMD_EXEC_PID=123834
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.2OC571
+VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
+HOME=/home/zain
+USERNAME=zain
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LC_PAPER=fr_FR.UTF-8
+XDG_CURRENT_DESKTOP=Unity
+VTE_VERSION=6800
+WAYLAND_DISPLAY=wayland-0
+GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/c06bb7ba_6bc4_40ba_a8f9_e1bc49a63a36
+CHROME_DESKTOP=code-url-handler.desktop
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
+GNOME_SETUP_DISPLAY=:1
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LC_IDENTIFICATION=fr_FR.UTF-8
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=zain
+VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-86aa2aefbf.sock
+GNOME_TERMINAL_SERVICE=:1.6682
+DISPLAY=:0
+SHLVL=3
+LC_TELEPHONE=fr_FR.UTF-8
+QT_IM_MODULE=ibus
+LC_MEASUREMENT=fr_FR.UTF-8
+XDG_RUNTIME_DIR=/run/user/1000
+LC_TIME=fr_FR.UTF-8
+VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+GDK_BACKEND=x11
+PATH=/home/zain/.cargo/bin:/home/zain/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/zain/.local/share/JetBrains/Toolbox/scripts
+GDMSESSION=ubuntu
+ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+LC_NUMERIC=fr_FR.UTF-8
+OLDPWD=/home/zain/Documents
+TERM_PROGRAM=vscode
+_=/usr/bin/env
+zain@zain:~/Documents/simple_shell$ 

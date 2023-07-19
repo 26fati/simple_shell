@@ -15,7 +15,7 @@ int main(int argc __attribute__((unused)), char **av __attribute__((unused)))
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "($) ", 5);
+		write(0, "($) ", 5);
 		argv = read_line();
 		command_path = locate(argv[0]);
 		if (command_path)
@@ -40,9 +40,19 @@ int main(int argc __attribute__((unused)), char **av __attribute__((unused)))
 		}
 		**/
 		else
-			perror("./shell");
+		{
+			if(errno == ENOENT) 
+			{
+				write(2, "./hsh: 1: ", 10); 
+				write(2, argv[0], _strlen(argv[0]));
+				write(2, ": not found\n", 12);
+				exit(127);
+			}
+		}
 
-		break;
+		//	perror("./shell");
+
+		
 	}
 	return (0);
 }
