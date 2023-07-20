@@ -15,7 +15,7 @@ void execute_command_directly(char **argv) {
 
     else if (pid == 0)
     {
-        // printf("test pid  = 0\n");
+        printf("test pid  = 0\n");
         if (execve(argv[0], argv, environ) == -1)
         {
             perror("./hsh");
@@ -28,9 +28,9 @@ void execute_command_directly(char **argv) {
         int res = waitpid(pid, &status, 0);
         // printf("state = %d\n", status);
         if (res == -1)
-        {
-          perror("waitpid");
-        }
+		{
+			perror("waitpid");
+		}
 
         if(WIFEXITED(status)) {
 

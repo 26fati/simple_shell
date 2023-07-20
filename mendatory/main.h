@@ -17,8 +17,6 @@ extern char **environ;
 
 char *_strjoin(char *str1, char *str2); 
 int _strlen(char *s);
-int _atoi(char *s);
-bool has_non_numerical_chars(char *str);
 void _trim(char* s);
 int is_space(char *s);
 char * _strcpy(char *dest, char *src);
@@ -32,6 +30,4 @@ char **tokenize_command(char *command, const char *delimiter, int *count);
 void execute_command_directly(char **argv);
 void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len);
 void _printenv(char **envp);
-void exit_command(char **argv);
-void setenv_command(char **argv);
 #endif

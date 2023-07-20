@@ -29,10 +29,8 @@ int main()
     
     argv = tokenize_command(command, delimiter, &count);
     
-    if (!_strcmp(argv[0], "exit")) {exit_command(argv); continue;}; // we must free memory beofre continue
+    if (!_strcmp(argv[0], "exit")) {exit(EXIT_SUCCESS); };
     if (!_strcmp(argv[0], "env")) {_printenv(environ);continue;}
-
-    if (!_strcmp(argv[0], "setenv")) {setenv_command(argv); continue;}
 
     if (file_exist(argv[0])) execute_command_directly(argv);
     
