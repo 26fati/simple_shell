@@ -1,5 +1,5 @@
 #include "main.h"
-
+/*
 void setenv_command(char **environ, char **argv) {
     char * var = argv[1];
     char * value = argv[2];
@@ -110,4 +110,42 @@ void _setenv(char **arv)
     // Allocate memory and create a new environment variable string with the format "name=value"
     environ[i] = concat_all(arv[1], "=", arv[2]);
     environ[i + 1] = '\0'; // Set the next element to NULL to mark the end of the environment array
+}
+*/
+void setenv_command(char **environ, char **argv)
+{
+	char *var = argv[1];
+	char *value = argv[2];
+	size_t i = 0, j, k;
+	char *env_var = NULL;
+	
+	if (true)
+	{
+	while (environ[i] != NULL)
+	{
+		env_var = environ[i];
+		j = 0;
+		while (env_var[j] == var[j] && env_var[j] != '=' && env_var[j] && var[j])
+			j++;
+		if (var[j] == '\0')
+		{
+			k = 0;
+			while (value[k])
+			{
+				environ[i][j + 1 + k] = value[k];
+				k++;
+																								}
+			environ[i][j + 1 + k] = '\0';
+			break;
+		}
+		i++;
+	}
+	}
+	else
+	{
+	char * joined = join('=',argv[1], argv[2]);
+	environ[i] = joined;
+	environ[i + 1] = '\0';
+	}
+
 }
