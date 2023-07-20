@@ -28,12 +28,6 @@ char *_get_paths(char **env)
       _strcpy(paths, *(env_var) + prefix_len);
     }
   }
-
-  // printf("path is %s with length of %d \n", paths, _strlen(paths));
-
-  // if (paths == NULL) printf("null ddo\n");
-
-
   return (paths);
 }
 

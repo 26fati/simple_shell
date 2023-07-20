@@ -17,6 +17,7 @@ extern char **environ;
 
 char *_strjoin(char *str1, char *str2); 
 int _strlen(char *s);
+int index_of_substring(char *str, char *substr);
 int _atoi(char *s);
 bool has_non_numerical_chars(char *str);
 void _trim(char* s);
@@ -33,5 +34,9 @@ void execute_command_directly(char **argv);
 void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len);
 void _printenv(char **envp);
 void exit_command(char **argv);
-void setenv_command(char **argv);
+void setenv_command(char **environ,char **argv);
+bool search_env_var(char **env, char *var_to_search);
 #endif
+/*
+    prgoram is existing when the command is not found
+*/
