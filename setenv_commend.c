@@ -116,10 +116,9 @@ void setenv_command(char **environ, char **argv)
 {
 	char *var = argv[1];
 	char *value = argv[2];
-	size_t i = 0, j, k;
+	size_t i = 0, j = 0, k;
 	char *env_var = NULL;
-	
-	if (true)
+	if(true)
 	{
 	while (environ[i] != NULL)
 	{
@@ -136,7 +135,6 @@ void setenv_command(char **environ, char **argv)
 				k++;
 																								}
 			environ[i][j + 1 + k] = '\0';
-			break;
 		}
 		i++;
 	}
