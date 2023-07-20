@@ -36,6 +36,7 @@ void _printenv(char **envp);
 void exit_command(char **argv);
 void setenv_command(char **environ,char **argv);
 bool search_env_var(char **env, char *var_to_search);
+int add_environment_variable(char*** environ, const char* new_var_value);
 #endif
 /*
     prgoram is existing when the command is not found

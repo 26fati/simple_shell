@@ -5,7 +5,7 @@ void exit_command(char **argv) {
         
         if (!argv[1]) exit(EXIT_SUCCESS);
 
-        int exit_status = _atoi(argv[1]);
+        int exit_status = _atoi(argv[1]); // exit LAKJF134
 
         if (has_non_numerical_chars(argv[1]) || exit_status < 0) {
             write(2, "./hsh: 1: ", 10); 
