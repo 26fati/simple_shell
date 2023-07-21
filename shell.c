@@ -33,6 +33,7 @@ int main()
     if (!_strcmp(argv[0], "env")) {_printenv(environ);continue;}
 
     if (!_strcmp(argv[0], "setenv")) {setenv_command(argv[1], argv[2], 2); continue;}
+    if (!_strcmp(argv[0], "unsetenv")) {unsetenv_command(argv[1]); continue;}
 
     if (file_exist(argv[0])) execute_command_directly(argv);
     

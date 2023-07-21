@@ -154,3 +154,36 @@ int setenv_command(char *name, char *val, int overwrite)
 	return (0);
 
 }
+
+int unsetenv_command(char *name)
+{
+	char *var = name;
+	size_t i = 0, j = 0, k;
+	char *env_var = NULL;
+	
+	if (name == NULL || *name == '\0' || _strchr(name, '=') != NULL)
+	{
+		write(2, "./hsh: Invalid argument\n", 24);
+		return (-1);
+	}
+	
+	while (environ[i] != NULL)
+	{
+		env_var = environ[i];
+		j = 0;
+		while (env_var[j] == var[j] && env_var[j] != '=' && env_var[j] && var[j])
+			j++;
+		if (var[j] == '\0')
+		{
+			environ[i] = environ[i + 1];
+			while(environ[++i])
+			{
+				environ[i] = environ[i + 1];
+			}
+			break;
+		}
+		i++;
+	}
+	return (0);
+							
+}
