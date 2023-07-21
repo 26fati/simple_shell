@@ -38,7 +38,10 @@ int setenv_command(char *name, char *val, int overwrite);
 char *_strchr(char *s, char c);
 int unsetenv_command(char *name);
 bool search_env_var(char **env, char *var_to_search);
+int cd_command(char *path, char **environ);
 int add_environment_variable(char*** environ, const char* new_var_value);
+char *_get_home(char **environ);
+char *_get_old_working_dir(char **environ);
 #endif
 /*
     prgoram is existing when the command is not found

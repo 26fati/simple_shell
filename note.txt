@@ -1,0 +1,8 @@
+
+        if(WIFEXITED(status)) {
+
+            _exit(2);
+        };
+
+
+        protblem here

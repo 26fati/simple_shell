@@ -28,10 +28,13 @@ void execute_command_directly(char **argv) {
           perror("waitpid");
         }
 
-        if(WIFEXITED(status)) {
+        /*
+          we added this line but I dont know why for sure
+        */
+        // if(WIFEXITED(status)) {
 
-            _exit(2);
-        };
+        //     _exit(2);
+        // };
     }
 }
 
