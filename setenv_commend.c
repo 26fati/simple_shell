@@ -118,8 +118,7 @@ void setenv_command(char **environ, char **argv)
 	char *value = argv[2];
 	size_t i = 0, j = 0, k;
 	char *env_var = NULL;
-	if(true)
-	{
+	
 	while (environ[i] != NULL)
 	{
 		env_var = environ[i];
@@ -135,11 +134,12 @@ void setenv_command(char **environ, char **argv)
 				k++;
 																								}
 			environ[i][j + 1 + k] = '\0';
+			return;
 		}
 		i++;
 	}
-	}
-	else
+	
+	if(!environ[i])
 	{
 	char * joined = join('=',argv[1], argv[2]);
 	environ[i] = joined;
