@@ -13,7 +13,7 @@ char **tokenize_command(char *command, const char *delimiter, int *count)
   char **argv;
   int i;
 
-  // Allocate memory for line
+  /* Allocate memory for line */
   line = malloc(sizeof(char *) * (strlen(command) + 1));
   if (line == NULL)
   {
@@ -22,7 +22,7 @@ char **tokenize_command(char *command, const char *delimiter, int *count)
   }
   strcpy(line, command);
 
-  // Count the number of tokens
+  /* Count the number of tokens */
   *count = 0;
   token = strtok(line, delimiter);
   while (token)
@@ -31,7 +31,7 @@ char **tokenize_command(char *command, const char *delimiter, int *count)
     token = strtok(NULL, delimiter);
   }
 
-  // Allocate memory for argv array
+  /* Allocate memory for argv array */
   argv = malloc(sizeof(char *) * (*count + 1));
   if (argv == NULL)
   {
@@ -39,7 +39,7 @@ char **tokenize_command(char *command, const char *delimiter, int *count)
     exit(EXIT_FAILURE);
   }
 
-  // Copy tokens into argv array
+  /* Copy tokens into argv array */
   token = strtok(command, delimiter);
   for (i = 0; token != NULL; i++)
   {
@@ -54,7 +54,7 @@ char **tokenize_command(char *command, const char *delimiter, int *count)
   }
   argv[i] = NULL;
 
-  // Free the memory allocated for line
+  /* Free the memory allocated for line */
   free(line);
 
   return (argv);

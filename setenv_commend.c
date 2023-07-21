@@ -158,7 +158,7 @@ int setenv_command(char *name, char *val, int overwrite)
 int unsetenv_command(char *name)
 {
 	char *var = name;
-	size_t i = 0, j = 0, k;
+	size_t i = 0, j = 0;
 	char *env_var = NULL;
 	
 	if (name == NULL || *name == '\0' || _strchr(name, '=') != NULL)

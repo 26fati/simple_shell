@@ -2,20 +2,20 @@
 
 int main()
 {
-  // printf("before anything\n");
+  /* printf("before anything\n"); */
   char *prompt = "($) ";
-  char *command, *line, *token, **paths_arr;
+  char *command = NULL, **paths_arr;
   size_t command_size = 0;
   ssize_t command_len;
-  char **argv, **s;
+  char **argv;
   char *delimiter = " \t\n";
-  int i, count = 0, tokens_path_len;
+  int i = 0, count = 0, tokens_path_len = 0;
   char *paths = _get_paths(environ);
-  bool is_path_empty = false;
-  bool command_executed = true;
+  /* bool is_path_empty = false; */
+  /* bool command_executed = true; */
   paths_arr = _get_path_tokens(paths);
   tokens_path_len = path_arr_length(paths_arr);
-  // printf("token path len %d\n", tokens_path_len);
+  /* printf("token path len %d\n", tokens_path_len); */
   while (1)
   {
     write(0, prompt, 5);
@@ -29,7 +29,7 @@ int main()
     
     argv = tokenize_command(command, delimiter, &count);
     
-    if (!_strcmp(argv[0], "exit")) {exit_command(argv); continue;}; // we must free memory beofre continue
+    if (!_strcmp(argv[0], "exit")) {exit_command(argv); continue;}; /* we must free memory beofre continue */
     if (!_strcmp(argv[0], "env")) {_printenv(environ);continue;}
 
     if (!_strcmp(argv[0], "setenv")) {setenv_command(argv[1], argv[2], 2); continue;}

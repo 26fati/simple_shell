@@ -5,7 +5,6 @@ void execute_command_directly(char **argv) {
     int status;
     pid_t pid;
 
-    // printf("execute_command_directly\n");
     pid = fork();
 
     if (pid == -1)
@@ -15,18 +14,15 @@ void execute_command_directly(char **argv) {
 
     else if (pid == 0)
     {
-        // printf("test pid  = 0\n");
         if (execve(argv[0], argv, environ) == -1)
         {
             perror("./hsh");
-            // exit(EXIT_FAILURE);
         }
-        // printf("a;dslkfjaslkf\n");
     }
     else
     {
         int res = waitpid(pid, &status, 0);
-        // printf("state = %d\n", status);
+
         if (res == -1)
         {
           perror("waitpid");
@@ -40,10 +36,14 @@ void execute_command_directly(char **argv) {
 }
 
 
-void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len) {
+void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len) 
+{
+	int i;
+	char *full_path = NULL;
 
-  for (int i = 0; i < tokens_path_len; i++) {
-    char *full_path = join('/', paths_arr[i], argv[0]);
+
+  for (i = 0; i < tokens_path_len; i++) {
+    full_path = join('/', paths_arr[i], argv[0]);
     if (file_exist(full_path)) {
       if (fork() == 0) {
         if (execve(full_path, argv, environ) == -1)
@@ -52,12 +52,12 @@ void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len) 
         wait(NULL);
       }
       free(full_path);
-      return; // Exit the function if the command was found and executed.
+      return; /* Exit the function if the command was found and executed. */
     }
     free(full_path);
   }
   
-  // If the command is not found in any path, display an error message.
+  /* If the command is not found in any path, display an error message. */
   write(2, "./hsh: 1: ", 10); 
   write(2, argv[0], _strlen(argv[0]));
   write(2, ": not found\n", 12);

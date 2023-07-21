@@ -10,8 +10,8 @@ char *_get_paths(char **env)
 {
   char **env_var;
   char *paths = NULL;
-  env_var = env;
   size_t prefix_len = 5;
+  env_var = env;
 
   if (env == NULL) return NULL;
 
@@ -89,11 +89,9 @@ int file_exist(const char *file_path)
   struct stat buffer;
 
   if (stat(file_path, &buffer) == 0) {
-    // printf("file exist\n");
     return (1);
     
   }
-  // printf("file does not exist\n");
   return (0);
 }
 
