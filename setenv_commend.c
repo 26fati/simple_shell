@@ -112,20 +112,26 @@ void _setenv(char **arv)
     environ[i + 1] = '\0'; // Set the next element to NULL to mark the end of the environment array
 }
 */
-void setenv_command(char **environ, char **argv)
+int setenv_command(char *name, char *val, int overwrite)
 {
-	char *var = argv[1];
-	char *value = argv[2];
+	char *var = name;
+	char *value = val;
 	size_t i = 0, j = 0, k;
 	char *env_var = NULL;
 	
+	if (name == NULL || *name == '\0' || _strchr(name, '=') != NULL)
+	{
+		write(2, "./hsh: Invalid argument\n", 24);
+		return (-1);
+	}
+
 	while (environ[i] != NULL)
 	{
 		env_var = environ[i];
 		j = 0;
 		while (env_var[j] == var[j] && env_var[j] != '=' && env_var[j] && var[j])
 			j++;
-		if (var[j] == '\0')
+		if (var[j] == '\0' && overwrite != 0)
 		{
 			k = 0;
 			while (value[k])
@@ -134,16 +140,17 @@ void setenv_command(char **environ, char **argv)
 				k++;
 																								}
 			environ[i][j + 1 + k] = '\0';
-			return;
+			break;
 		}
 		i++;
 	}
 	
 	if(!environ[i])
 	{
-	char * joined = join('=',argv[1], argv[2]);
+	char * joined = join('=',name, value);
 	environ[i] = joined;
 	environ[i + 1] = '\0';
 	}
+	return (0);
 
 }

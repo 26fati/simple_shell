@@ -34,7 +34,8 @@ void execute_command_directly(char **argv);
 void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len);
 void _printenv(char **envp);
 void exit_command(char **argv);
-void setenv_command(char **environ,char **argv);
+int setenv_command(char *name, char *val, int overwrite);
+char *_strchr(char *s, char c);
 bool search_env_var(char **env, char *var_to_search);
 int add_environment_variable(char*** environ, const char* new_var_value);
 #endif

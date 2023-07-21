@@ -32,7 +32,7 @@ int main()
     if (!_strcmp(argv[0], "exit")) {exit_command(argv); continue;}; // we must free memory beofre continue
     if (!_strcmp(argv[0], "env")) {_printenv(environ);continue;}
 
-    if (!_strcmp(argv[0], "setenv")) {setenv_command(environ, argv); continue;}
+    if (!_strcmp(argv[0], "setenv")) {setenv_command(argv[1], argv[2], 2); continue;}
 
     if (file_exist(argv[0])) execute_command_directly(argv);
     
