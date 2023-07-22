@@ -1,49 +1,48 @@
 #include "main.h"
 
-int main()
+/**
+ * main - entry point
+ * Return: integer.
+ */
+
+
+int main(void)
 {
-  /* printf("before anything\n"); */
-  char *prompt = "($) ";
-  char *command = NULL, **paths_arr;
-  size_t command_size = 0;
-  ssize_t command_len;
-  char **argv;
-  char *delimiter = " \t\n";
-  int i = 0, count = 0, tokens_path_len = 0;
-  char *paths = _get_paths(environ);
-  /* bool is_path_empty = false; */
-  /* bool command_executed = true; */
-  paths_arr = _get_path_tokens(paths);
-  tokens_path_len = path_arr_length(paths_arr);
-  /* printf("token path len %d\n", tokens_path_len); */
-  while (1)
-  {
-    write(0, prompt, 5);
+	char *prompt = "($) ", *command = NULL, **paths_arr, **argv, *paths;
+	size_t command_size = 0, command_len;
+	char *delimiter = " \t\n";
+	int i = 0, count = 0, tokens_path_len = 0;
+	bool is_built_in = false;
 
-    command_len = getline(&command, &command_size, stdin);
+	paths = _get_paths(environ);
+	paths_arr = _get_path_tokens(paths);
+	tokens_path_len = path_arr_length(paths_arr);
 
-    if (command_len == -1) exit(EXIT_SUCCESS);
-  
-    if (is_space(command)) continue;
+	while (1)
+	{
+		write(0, prompt, 5);
+		command_len = getline(&command, &command_size, stdin);
+		if ((int)command_len == -1)
+			exit(EXIT_SUCCESS);
 
-    
-    argv = tokenize_command(command, delimiter, &count);
-    
-    if (!_strcmp(argv[0], "exit")) {exit_command(argv); continue;}; /* we must free memory beofre continue */
-    if (!_strcmp(argv[0], "env")) {_printenv(environ);continue;}
+		if (is_space(command))
+			continue;
 
-    if (!_strcmp(argv[0], "setenv")) {setenv_command(argv[1], argv[2], 2); continue;}
-    if (!_strcmp(argv[0], "unsetenv")) {unsetenv_command(argv[1]); continue;}
-    if (!_strcmp(argv[0], "cd")) {cd_command(argv[1], environ); continue;}
+		argv = tokenize_command(command, delimiter, &count);
+		is_built_in = false;
+		handle_builtin_commands(argv, environ, &is_built_in);
 
-    if (file_exist(argv[0])) execute_command_directly(argv);
-    
-    else try_execute_with_paths(argv, paths_arr, tokens_path_len);
-    
+		if (is_built_in)
+			continue;
 
-    for (i = 0; i < count; i++) free(argv[i]);
-    
-  }
+		if (file_exist(argv[0]))
+			execute_command_directly(argv);
+		else
+			try_execute_with_paths(argv, paths_arr, tokens_path_len);
 
-  return (0);
+		for (i = 0; i < count; i++)
+			free(argv[i]);
+	}
+
+	return (0);
 }
