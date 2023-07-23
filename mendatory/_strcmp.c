@@ -12,7 +12,8 @@
  * <0 if the first non-matching character in s1,
  * is lower (in ASCII) than that of s2.
  */
-int _strcmp(char *s1, char *s2) {
+int _strcmp(char *s1, char *s2)
+{
 	int i = 0;
 
 	while (s1[i] != '\0' && s2[i] != '\0')
