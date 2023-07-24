@@ -9,7 +9,7 @@
  * Return: void.
  */
 
-void execute_command_directly(char **argv)
+void execute_command_directly(char **argv) 
 {
 
 	int status;
@@ -24,7 +24,7 @@ void execute_command_directly(char **argv)
 
 	else if (pid == 0)
 	{
-		if (execve(argv[0], argv, environ) == -1)
+		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror("./hsh");
 		}
@@ -59,7 +59,7 @@ void execute_command_directly(char **argv)
  * Return: void.
  */
 
-void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len)
+void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len) 
 {
 	int i;
 	char *full_path = NULL;

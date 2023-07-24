@@ -5,7 +5,6 @@
  * handle_builtin_commands - to habdle builtin commands.
  *
  * @argv: list of arguments
- * @count: length of arguments
  * @environ: global variable env.
  * @executed: if any of the builtin commands getexecuted it turns into true.
  */
