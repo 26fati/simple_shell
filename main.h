@@ -43,6 +43,8 @@ int add_environment_variable(char*** environ, const char* new_var_value);
 char *_get_home(char **environ);
 char *_get_old_working_dir(char **environ);
 void handle_builtin_commands(char **argv, char **environ, bool *executed);
+void cleanup_memory(char **argv, char **paths_arr, char *paths);
+
 #endif
 /*
     prgoram is existing when the command is not found

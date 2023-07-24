@@ -81,7 +81,7 @@ void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len)
 			free(full_path);
 			return; /* Exit the function if the command was found and executed. */
 		}
-		free(full_path);
+		free(full_path);	
 	}
 
 	/* If the command is not found in any path, display an error message. */

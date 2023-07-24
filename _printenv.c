@@ -1,18 +1,18 @@
 #include "main.h"
 /**
 * _printenv - print enviroment
-* @envp: 1
+* @envp: global enviroment
 *
-* Return: non
+* Return: void
 */
 void _printenv(char **envp)
 {
-	size_t run = 0;
+	size_t count = 0;
 
-	while (envp[run])
+	while (envp[count])
 	{
-		write(STDOUT_FILENO, envp[run], _strlen(envp[run]));
+		write(STDOUT_FILENO, envp[count], _strlen(envp[count]));
 		write(STDOUT_FILENO, "\n", 1);
-		run++;
+		count++;
 	}
 }
