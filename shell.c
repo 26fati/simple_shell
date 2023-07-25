@@ -20,7 +20,6 @@ int main(void)
 		tokens_path_len = path_arr_length(paths_arr);
 		write(0, prompt, 5);
 		command_len = getline(&command, &command_size, stdin);
-		printf("command is %s\n", command);
 		if ((int)command_len == -1)
 		{
 			/*Handle newline character before exiting*/
