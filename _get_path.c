@@ -42,13 +42,13 @@ char *_get_paths(char **env)
  */
 char **_get_path_tokens(char *paths)
 {
-	if (paths == NULL)
-		return (NULL);
 	char *token, *p1, *p2;
 	char **arr_tokens;
 	int i;
 	size_t num_tokens;
 
+	if (paths == NULL)
+                return (NULL);
 	p1 = (char *)malloc(sizeof(char) * (_strlen(paths) + 1));
 	_strcpy(p1, paths);
 

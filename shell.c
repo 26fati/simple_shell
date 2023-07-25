@@ -8,11 +8,10 @@
 
 int main(void)
 {
-	// return 0;
 	char *prompt = "($) ", *command = NULL, **paths_arr, **argv, *paths;
 	size_t command_size = 0, command_len;
 	char *delimiter = " \t\n";
-	int i = 0, count = 0, tokens_path_len = 0;
+	int count = 0, tokens_path_len = 0;
 	bool is_built_in = false;
 		paths = _get_paths(environ);
 		paths_arr = _get_path_tokens(paths);
@@ -35,8 +34,8 @@ int main(void)
 			continue;
 
 		argv = tokenize_command(command, delimiter, &count);
-		// argv = split_line(command);
-		// free(command);
+		/* argv = split_line(command);
+		// free(command); */
 		is_built_in = false;
 		handle_builtin_commands(argv, environ, &is_built_in);
 
@@ -47,16 +46,16 @@ int main(void)
 		}
 
 		if (file_exist(argv[0])){
-			// printf("file exist\n");
+			/* printf("file exist\n"); */
 			execute_command_directly(argv);
 		}
 		else{
-			// printf("file not exist\n");
+			/* printf("file not exist\n"); */
 			try_execute_with_paths(argv, paths_arr, tokens_path_len);
 		}
 	
 
-		// cleanup_memory(argv, paths_arr, paths);
+		/* cleanup_memory(argv, paths_arr, paths); */
 	}
 
 	return (0);
@@ -67,12 +66,12 @@ void cleanup_memory(char **argv, char **paths_arr, char *paths)
 {
     int i;
 
-    // Free argv and its elements
+    /* Free argv and its elements */
     for (i = 0; argv[i] != NULL; i++)
         free(argv[i]);
     free(argv);
 
-    // Free paths_arr and its elements
+    /*  Free paths_arr and its elements */
 	if (paths_arr != NULL) {
 		for (i = 0; paths_arr[i] != NULL; i++)
 			free(paths_arr[i]);
