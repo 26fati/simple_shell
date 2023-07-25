@@ -38,7 +38,6 @@ int main(void)
 			cleanup_memory(argv, paths_arr, paths);
 			continue;
 		}
-
 		if (file_exist(argv[0]))
 			execute_command_directly(argv);
 		else
@@ -46,10 +45,7 @@ int main(void)
 		cleanup_memory(argv, paths_arr, paths);
 		free(command);
 		command = NULL;
-		printf("command is %s\n", command);
-
 	}
-
 	return (0);
 }
 
