@@ -20,6 +20,7 @@ int main(void)
 		tokens_path_len = path_arr_length(paths_arr);
 		write(0, prompt, 5);
 		command_len = getline(&command, &command_size, stdin);
+		printf("command is %s\n", command);
 		if ((int)command_len == -1)
 		{
 			/*Handle newline character before exiting*/
@@ -43,6 +44,10 @@ int main(void)
 		else
 			try_execute_with_paths(argv, paths_arr, tokens_path_len);
 		cleanup_memory(argv, paths_arr, paths);
+		free(command);
+		command = NULL;
+		printf("command is %s\n", command);
+
 	}
 
 	return (0);
