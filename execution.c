@@ -9,7 +9,7 @@
  * Return: void.
  */
 
-void execute_command_directly(char **argv) 
+void execute_command_directly(char **argv)
 {
 	int status, status_code;
 	pid_t pid;
@@ -37,16 +37,15 @@ void execute_command_directly(char **argv)
 			perror("waitpid");
 		}
 
-		
 			/*this for task 4*/
-			if(WIFEXITED(status)) {
+			if (WIFEXITED(status))
+			{
 				status_code = WEXITSTATUS(status);
 				if (status_code != 0)
 				{
 					_exit(2);
 				}
 			};
-		
 	}
 }
 
@@ -61,7 +60,8 @@ void execute_command_directly(char **argv)
  * Return: void.
  */
 
-void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len) 
+void try_execute_with_paths(char **argv, char **paths_arr,
+int tokens_path_len)
 {
 	int i;
 	char *full_path = NULL;
@@ -83,7 +83,7 @@ void try_execute_with_paths(char **argv, char **paths_arr, int tokens_path_len)
 			free(full_path);
 			return; /* Exit the function if the command was found and executed. */
 		}
-		free(full_path);	
+		free(full_path);
 	}
 
 	/* If the command is not found in any path, display an error message. */

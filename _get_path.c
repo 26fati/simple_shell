@@ -48,7 +48,7 @@ char **_get_path_tokens(char *paths)
 	size_t num_tokens;
 
 	if (paths == NULL)
-                return (NULL);
+		return (NULL);
 	p1 = (char *)malloc(sizeof(char) * (_strlen(paths) + 1));
 	_strcpy(p1, paths);
 
@@ -73,13 +73,7 @@ char **_get_path_tokens(char *paths)
 		_strcpy(arr_tokens[i], token);
 		token = strtok(NULL, ":");
 	}
-
-	/*
-	*	Adding a null pointer to make it easy
-	*	to calculate the length of the path array
-	*/
 	arr_tokens[i] = NULL;
-
 	free(p1);
 	free(p2);
 
