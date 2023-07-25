@@ -11,7 +11,7 @@
 
 void execute_command_directly(char **argv) 
 {
-	int status;
+	int status, status_code;
 	pid_t pid;
 
 	pid = fork();
@@ -40,8 +40,11 @@ void execute_command_directly(char **argv)
 		
 			/*this for task 4*/
 			if(WIFEXITED(status)) {
-
-		   _exit(2);
+				status_code = WEXITSTATUS(status);
+				if (status_code != 0)
+				{
+					_exit(2);
+				}
 			};
 		
 	}
