@@ -14,7 +14,6 @@ char *_get_paths(char **env)
 	int path_len;
 
 	env_var = env;
-
 	if (env == NULL)
 		return (NULL);
 
@@ -43,6 +42,8 @@ char *_get_paths(char **env)
  */
 char **_get_path_tokens(char *paths)
 {
+	if (paths == NULL)
+		return (NULL);
 	char *token, *p1, *p2;
 	char **arr_tokens;
 	int i;

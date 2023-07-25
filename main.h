@@ -14,7 +14,7 @@
 
 extern char **environ;
 
-
+char **split_line(char *line);
 char *_strjoin(char *str1, char *str2); 
 int _strlen(char *s);
 int index_of_substring(char *str, char *substr);

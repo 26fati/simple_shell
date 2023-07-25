@@ -11,7 +11,6 @@
 
 void execute_command_directly(char **argv) 
 {
-
 	int status;
 	pid_t pid;
 
@@ -24,7 +23,7 @@ void execute_command_directly(char **argv)
 
 	else if (pid == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(argv[0], argv, environ) == -1)
 		{
 			perror("./hsh");
 		}
@@ -38,13 +37,13 @@ void execute_command_directly(char **argv)
 			perror("waitpid");
 		}
 
-		/*
-			* we added this line but I dont know why for sure
+		
+			/*this for task 4*/
 			if(WIFEXITED(status)) {
 
 		   _exit(2);
 			};
-		*/
+		
 	}
 }
 
