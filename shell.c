@@ -7,9 +7,9 @@
 
 int main(void)
 {
-	char *prompt = "($) ", *command = NULL, **paths_arr, **argv, *paths;
+	char *prompt = "($) ", *command = NULL, **paths_arr, **argv, *paths,
+		 *delimiter = " \t\n";
 	size_t command_size = 0, command_len;
-	char *delimiter = " \t\n";
 	int count = 0, tokens_path_len = 0;
 	bool is_built_in = false;
 
@@ -24,10 +24,7 @@ int main(void)
 		{
 			cleanup_memory_no_argv(paths_arr, paths, tokens_path_len);
 			free(command);
-			/*Handle newline character before exiting*/
-			if (isatty(STDIN_FILENO))
-				write(STDOUT_FILENO, "\n", 1);
-			exit(EXIT_SUCCESS);
+			exit_shell();
 		}
 		if (is_space(command))
 			continue;
@@ -35,6 +32,8 @@ int main(void)
 		free(command);
 		command = NULL;
 		is_built_in = false;
+		handle_builtin_commands(argv, environ, &is_built_in,
+								paths_arr, paths, tokens_path_len);
 		if (is_built_in)
 		{
 			cleanup_memory(argv, paths_arr, paths, tokens_path_len);
@@ -58,9 +57,8 @@ int main(void)
  * Return: void.
  */
 
-
 void cleanup_memory(char **argv, char **paths_arr, char *paths,
-int tokens_path_len)
+					int tokens_path_len)
 {
 	int i;
 
@@ -96,4 +94,16 @@ void cleanup_memory_no_argv(char **paths_arr, char *paths, int tokens_path_len)
 		free(paths_arr);
 	}
 	free(paths);
+}
+
+/**
+ * exit_shell - entry point
+ * Return: void.
+ */
+
+void exit_shell(void)
+{
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	exit(EXIT_SUCCESS);
 }

@@ -11,7 +11,11 @@ void exit_command(char **argv)
 	int exit_status = 0;
 
 	if (!argv[1])
+	{
+		free(argv[0]);
+		free(argv);
 		exit(EXIT_SUCCESS);
+	}
 
 	exit_status = _atoi(argv[1]); /* exit LAKJF134 */
 
@@ -22,11 +26,19 @@ void exit_command(char **argv)
 		write(2, ": Illegal number: ", 18);
 		write(2, argv[1], _strlen(argv[1]));
 		write(2, "\n", 1);
+		free(argv[0]);
+		free(argv[1]);
+		free(argv);
 		exit(2);
 	}
 
 	if (exit_status >= 0)
+	{
+		free(argv[0]);
+		free(argv[1]);
+		free(argv);
 		exit(exit_status);
+	}
 }
 
 /**
