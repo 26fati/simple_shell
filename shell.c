@@ -115,7 +115,6 @@ void exit_shell(void)
  * @paths_arr: Pointer to the array of string  all
  * @paths: possible path for executing a command.
  * @tokens_path_len: the number of paht to check
-
  * Return: void.
  */
 
