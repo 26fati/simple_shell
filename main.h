@@ -15,8 +15,8 @@
 extern char **environ;
 
 char *_strjoin(char *str1, char *str2);
-char **split_line(char *line);
 int _strlen(char *s);
+char **split_line(char *line);
 int index_of_substring(char *str, char *substr);
 int _atoi(char *s);
 bool has_non_numerical_chars(char *str);
