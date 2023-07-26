@@ -27,7 +27,12 @@ int main(void)
 			exit_shell();
 		}
 		if (is_space(command))
+		{
+			free(command);
+			command = NULL;
+			cleanup_memory_no_argv(paths_arr, paths, tokens_path_len);
 			continue;
+		}
 		argv = tokenize_command(command, delimiter, &count);
 		free(command);
 		command = NULL;
