@@ -21,11 +21,7 @@ int main(void)
 		write(0, prompt, 5);
 		command_len = getline(&command, &command_size, stdin);
 		if ((int)command_len == -1)
-		{
-			free(command);
-			cleanup_memory_no_argv(paths_arr, paths, tokens_path_len);
-			exit_shell();
-		}
+			cleanup_and_exit(command, paths_arr, paths, tokens_path_len);
 		if (is_space(command))
 		{
 			free(command);
@@ -108,6 +104,26 @@ void cleanup_memory_no_argv(char **paths_arr, char *paths, int tokens_path_len)
 
 void exit_shell(void)
 {
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	exit(EXIT_SUCCESS);
+}
+
+/**
+ * cleanup_and_exit - entry point
+ * @command: Pointer to the array of string  containing the arguments.
+ * @paths_arr: Pointer to the array of string  all
+ * @paths: possible path for executing a command.
+ * @tokens_path_len: the number of paht to check
+
+ * Return: void.
+ */
+
+void cleanup_and_exit(char *command, char **paths_arr, char *paths,
+int tokens_path_len)
+{
+	free(command);
+	cleanup_memory_no_argv(paths_arr, paths, tokens_path_len);
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	exit(EXIT_SUCCESS);

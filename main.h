@@ -51,4 +51,8 @@ void cleanup_memory_no_argv(char **paths_arr, char *paths,
 int tokens_path_len);
 void exit_shell(void);
 void free_cd(char *home, char *oldpwd);
+int change_to_home_directory(char *buff, char *home, char *oldpwd);
+void print_cd_error(char *path, char *oldpwd);
+void cleanup_and_exit(char *command, char **paths_arr, char *paths,
+int tokens_path_len);
 #endif

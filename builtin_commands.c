@@ -31,10 +31,8 @@ bool *executed, char **paths_arr, char *paths, int tokens_path_len)
 	else if (!_strcmp(argv[0], "setenv"))
 	{
 		*executed = true;
-		if (argv[1] == NULL && argv[2] == NULL){
+		if (argv[1] == NULL && argv[2] == NULL)
 			return;
-		}
-
 		setenv_command(argv[1], argv[2], 2);
 	}
 	else if (!_strcmp(argv[0], "unsetenv"))

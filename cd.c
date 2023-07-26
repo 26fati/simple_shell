@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
 /**
  * cd_command - Searches for PATH in the ENVIRON global variable.
  * @path: where to go whith cd
@@ -24,17 +23,7 @@ int cd_command(char *path, char **environ)
 	if (path == NULL)
 	{
 		home = _get_home(environ);
-		if (chdir(home) == 0)
-		{
-			setenv_command("OLDPWD", buff, 2);
-			free_cd(home, oldpwd);
-			return (0);
-		}
-		else
-		{
-			free_cd(home, oldpwd);
-			return (1);
-		}
+		return (change_to_home_directory(buff, home, oldpwd));
 	}
 	if (!_strcmp(path, "-"))
 	{
@@ -45,10 +34,8 @@ int cd_command(char *path, char **environ)
 			return (0);
 		}
 		else
-		{
 			free(oldpwd);
-			return (1);
-		}
+		return (1);
 	}
 	status = chdir(path);
 	if (status == 0)
@@ -58,15 +45,7 @@ int cd_command(char *path, char **environ)
 		return (0);
 	}
 	if (errno == EACCES || errno == ENOENT)
-	{
-		free(oldpwd);
-		write(2, "./hsh: 1: ", 10);
-		write(2, "cd", 2);
-		write(2, ": can't cd to ", 14);
-		write(2, path, _strlen(path));
-		write(2, "\n", 1);
-	}
-
+		print_cd_error(path, oldpwd);
 	return (1);
 }
 
@@ -129,7 +108,7 @@ char *_get_old_working_dir(char **environ)
 	{
 
 		if ((*env_var)[0] == 'O' && (*env_var)[1] == 'L' && (*env_var)[2] == 'D' &&
-				(*env_var)[3] == 'P' && (*env_var)[4] == 'W' && (*env_var)[5] == 'D')
+			(*env_var)[3] == 'P' && (*env_var)[4] == 'W' && (*env_var)[5] == 'D')
 		{
 			path_len = _strlen(*env_var) + 1;
 			paths = (char *)malloc(sizeof(char) * (path_len - prefix_len));
@@ -141,15 +120,27 @@ char *_get_old_working_dir(char **environ)
 
 
 /**
- * free_cd - frees memory allocated for cd.
+ * change_to_home_directory - changes to home directory.
+ * @buff: buffer.
  * @home: home path.
  * @oldpwd: old working directory path.
  *
- * Return: void.
+ * Return: int.
  */
 
-void free_cd(char *home, char *oldpwd)
+int change_to_home_directory(char *buff, char *home, char *oldpwd)
 {
-	free(home);
-	free(oldpwd);
+	if (chdir(home) == 0)
+	{
+		setenv_command("OLDPWD", buff, 2);
+		free_cd(home, oldpwd);
+		return (0);
+	}
+	else
+	{
+		free_cd(home, oldpwd);
+		print_cd_error(home, oldpwd);
+		return (1);
+	}
 }
+
