@@ -30,6 +30,7 @@ char **tokenize_command(char *command, const char *delimiter, int *count)
 	argv = malloc(sizeof(char *) * (*count + 1));
 	if (argv == NULL)
 	{
+		free(line);
 		perror("Memory allocation error");
 		exit(EXIT_FAILURE);
 	}
