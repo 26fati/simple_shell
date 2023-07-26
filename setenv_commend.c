@@ -15,7 +15,7 @@ int setenv_command(char *name, char *val, int overwrite)
 	char *var = name, *value = val, *env_var = NULL, *joined;
 	size_t i = 0, j = 0, k;
 
-	if (name == NULL || *name == '\0' || _strchr(name, '=') != NULL)
+	if (name == NULL || *name == '\0')
 	{
 		write(2, "./hsh: Invalid argument\n", 24);
 		return (-1);
@@ -47,6 +47,7 @@ int setenv_command(char *name, char *val, int overwrite)
 		environ[i] = joined;
 		environ[i + 1] = '\0';
 	}
+
 	return (0);
 }
 
@@ -63,7 +64,7 @@ int unsetenv_command(char *name)
 	size_t i = 0, j = 0;
 	char *env_var = NULL;
 
-	if (name == NULL || *name == '\0' || _strchr(name, '=') != NULL)
+	if (name == NULL || *name == '\0')
 	{
 		write(2, "./hsh: Invalid argument\n", 24);
 		return (-1);
