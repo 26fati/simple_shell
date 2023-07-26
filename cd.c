@@ -27,32 +27,46 @@ int cd_command(char *path, char **environ)
 		if (chdir(home) == 0)
 		{
 			setenv_command("OLDPWD", buff, 2);
+			free_cd(home, oldpwd);
 			return (0);
 		}
 		else
+		{
+			free_cd(home, oldpwd);
 			return (1);
+		}
 	}
 	if (!_strcmp(path, "-"))
 	{
 		if (chdir(oldpwd) == 0)
 		{
 			setenv_command("OLDPWD", buff, 2);
+			free(oldpwd);
 			return (0);
 		}
 		else
+		{
+			free(oldpwd);
 			return (1);
+		}
 	}
 	status = chdir(path);
 	if (status == 0)
+	{
+		setenv_command("OLDPWD", buff, 2);
+		free(oldpwd);
 		return (0);
+	}
 	if (errno == EACCES || errno == ENOENT)
 	{
+		free(oldpwd);
 		write(2, "./hsh: 1: ", 10);
 		write(2, "cd", 2);
 		write(2, ": can't cd to ", 14);
 		write(2, path, _strlen(path));
 		write(2, "\n", 1);
 	}
+
 	return (1);
 }
 
@@ -123,4 +137,19 @@ char *_get_old_working_dir(char **environ)
 		}
 	}
 	return (paths);
+}
+
+
+/**
+ * free_cd - frees memory allocated for cd.
+ * @home: home path.
+ * @oldpwd: old working directory path.
+ *
+ * Return: void.
+ */
+
+void free_cd(char *home, char *oldpwd)
+{
+	free(home);
+	free(oldpwd);
 }

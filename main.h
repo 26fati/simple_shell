@@ -50,4 +50,5 @@ int tokens_path_len);
 void cleanup_memory_no_argv(char **paths_arr, char *paths,
 int tokens_path_len);
 void exit_shell(void);
+void free_cd(char *home, char *oldpwd);
 #endif
