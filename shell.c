@@ -22,8 +22,8 @@ int main(void)
 		command_len = getline(&command, &command_size, stdin);
 		if ((int)command_len == -1)
 		{
-			cleanup_memory_no_argv(paths_arr, paths, tokens_path_len);
 			free(command);
+			cleanup_memory_no_argv(paths_arr, paths, tokens_path_len);
 			exit_shell();
 		}
 		if (is_space(command))

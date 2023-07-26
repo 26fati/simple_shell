@@ -87,8 +87,10 @@ int tokens_path_len)
 	}
 
 	/* If the command is not found in any path, display an error message. */
+	errno = 127;
 	write(2, "./hsh: 1: ", 10);
 	write(2, argv[0], _strlen(argv[0]));
 	write(2, ": not found\n", 12);
-	exit(127);
+	return;
+	/*exit(127);*/
 }
